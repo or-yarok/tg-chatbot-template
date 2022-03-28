@@ -5,7 +5,7 @@ from errors import *
 DIGITS_AND_DOT = set([str(digit) for digit in range(10)]) | set('.')
 MENU_FN = "menu_.txt"  # menu filename
 TOKEN = "insert your token from BotFather bot"
-DEFAULT_TEXT = "обрабатываю ваш запрос"
+DEFAULT_TEXT = "your query is processing..."
 
 menu = dict()
 bot = telebot.TeleBot(TOKEN)
