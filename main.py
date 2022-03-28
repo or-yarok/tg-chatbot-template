@@ -21,7 +21,7 @@ which will be shown if this menu item is selected.
     '''		
     body: str = body.strip("{}")
     delim: int = header.index(" ")
-    lvl, name = header[:delim], header[delim + 1:]
+    lvl, name = header[:delim], header[delim + 1:].strip()
     return cls(level=lvl, name=name, text=body)
 
     def __init__(self, level: str, name: str, children=None, text=''):
