@@ -2,12 +2,12 @@ import telebot
 from errors import *
 
 # CONSTANTS
-DIGITS_AND_DOT = set([str(digit) for digit in range(10)]) | set('.')
+DIGITS_AND_DOT = {str(digit) for digit in range(10)} | set('.')
 MENU_FN = "menu_.txt"  # menu filename
 TOKEN = "insert your token from BotFather bot"
 DEFAULT_TEXT = "your query is processing..."
 
-menu = dict()
+menu = {}
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -29,13 +29,9 @@ which will be shown if this menu item is selected.
         if set(level).issubset(DIGITS_AND_DOT): # menu item level must contain digits and periods only
             self.level = level
         else:
-            raise MenuEntryLevelError(str(level))
-            self.level = None
+            raise MenuEntryLevelError(level)
         self.name = name
-        if not children:
-            self.children = []
-        else:
-            self.children = children
+        self.children = children or []
         if text == "":
             text = DEFAULT_TEXT
         self.text = text
