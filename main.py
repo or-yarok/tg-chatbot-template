@@ -17,8 +17,7 @@ class MenuItem():
     '''This class method is a constructor of MenuItem instace from two
 lines of text: header must contain a hierarchical level of the menu item 
 and the menu item's name devided by a space, and body may contain a text
-which will be shown if this menu item is selected.
-    '''		
+which will be shown if this menu item is selected.'''		
     body: str = body.strip("{}")
     delim: int = header.index(" ")
     lvl, name = header[:delim], header[delim + 1:].strip()
