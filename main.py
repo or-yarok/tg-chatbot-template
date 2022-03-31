@@ -4,7 +4,7 @@ from errors import *
 # CONSTANTS
 DIGITS_AND_DOT = {str(digit) for digit in range(10)} | set('.')
 MENU_FN = "menu_.txt"  # menu filename
-TOKEN = "insert your token from BotFather bot"
+from config import TOKEN # insert your token from BotFather bot
 DEFAULT_TEXT = "your query is processing..."
 
 menu = {}
@@ -14,14 +14,16 @@ bot = telebot.TeleBot(TOKEN)
 class MenuItem():
     @classmethod
     def make_menu_item(cls, header: str, body: str = ""):
-    '''This class method is a constructor of MenuItem instace from two
-lines of text: header must contain a hierarchical level of the menu item 
-and the menu item's name devided by a space, and body may contain a text
-which will be shown if this menu item is selected.'''		
-    body: str = body.strip("{}")
-    delim: int = header.index(" ")
-    lvl, name = header[:delim], header[delim + 1:].strip()
-    return cls(level=lvl, name=name, text=body)
+        '''
+        This class method is a constructor of MenuItem instace from two
+        lines of text: header must contain a hierarchical level of the menu item 
+        and the menu item's name devided by a space, and body may contain a text
+        which will be shown if this menu item is selected.
+        '''
+        body: str = body.strip("{}")
+        delim: int = header.index(" ")
+        lvl, name = header[:delim], header[delim + 1:].strip()
+        return cls(level=lvl, name=name, text=body)
 
     def __init__(self, level: str, name: str, children=None, text=''):
         global menu
